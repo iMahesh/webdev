@@ -1,6 +1,18 @@
-var express=require("express");
-var app=express();
-var bodyParser=require("body-parser");
+var express     =require("express"),
+    app         =express(),
+    bodyParser  =require("body-parser"),
+    mongoose    =require("mongoose");
+
+mongoose.connect("mongodb://localhost/DB_NAME",function(err){
+    if(err){
+        console.log("SOMETHING WENT WRONG,COULDN'T CONNECT TO DATABASE! \n"+err);
+    }else{
+        console.log("CONNECTED TO DATABASE...");
+    }
+});
+
+app.use(bodyParser.urlencoded({extended:true}));
+app.set("view engine","ejs");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");

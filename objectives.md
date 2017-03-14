@@ -75,5 +75,5 @@ NPM is package manager for javascript.
     
 #Mongoose
     *is an elegant object modelin for nodejs mongodb
-    
+    *refer Databases/cats.js for setup and config
     
