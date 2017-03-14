@@ -17,41 +17,26 @@ app.set("view engine","ejs");
 //SCHEMA SETUP
 var campgroundsSchema=new mongoose.Schema({
     name:String,
-    image:String
+    image:String,
+    description: String
 });
 
 var Campground=mongoose.model("Campground",campgroundsSchema);
 
-// Campground.create({
-//     name:"Santa Clara",
-//     image:"https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg"
-    
-// },function(err,campground){
-//     if(err){
-//         console.log(err);
-//     }else{
-//         console.log("NEWLY CREATED CAMPGROUND \n"+campground);
-//     }
-// });
-
-// var campgrounds=[
-//         {name:"Salmon Creek",image:"https://farm5.staticflickr.com/4016/4369518024_0f64300987.jpg"},
-//         {name:"Santa Clara",image:"https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg"},
-//         {name:"San Roman",image:"https://farm5.staticflickr.com/4027/4368764673_c8345bd602.jpg"},
-//         {name:"Salmon Creek",image:"https://farm5.staticflickr.com/4016/4369518024_0f64300987.jpg"},
-//         {name:"Santa Clara",image:"https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg"},
-//         {name:"San Roman",image:"https://farm5.staticflickr.com/4027/4368764673_c8345bd602.jpg"},
-//         {name:"Salmon Creek",image:"https://farm5.staticflickr.com/4016/4369518024_0f64300987.jpg"},
-//         {name:"Santa Clara",image:"https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg"},
-//         {name:"San Roman",image:"https://farm5.staticflickr.com/4027/4368764673_c8345bd602.jpg"},
-//         {name:"Salmon Creek",image:"https://farm5.staticflickr.com/4016/4369518024_0f64300987.jpg"},
-//         {name:"Santa Clara",image:"https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg"},
-//         {name:"San Roman",image:"https://farm5.staticflickr.com/4027/4368764673_c8345bd602.jpg"},
-//         {name:"Salmon Creek",image:"https://farm5.staticflickr.com/4016/4369518024_0f64300987.jpg"},
-//         {name:"Santa Clara",image:"https://farm4.staticflickr.com/3270/2617191414_c5d8a25a94.jpg"},
-//         {name:"San Roman",image:"https://farm5.staticflickr.com/4027/4368764673_c8345bd602.jpg"},
-//         {name:"Creekwood",image:"https://farm2.staticflickr.com/1363/1342367857_2fd12531e7.jpg"}
-//         ];
+// //Create new campground and save to database
+//     Campground.create({
+//         name:"Salmon Creek",
+//         image:"https://farm5.staticflickr.com/4016/4369518024_0f64300987.jpg",
+//         description:"This is a huge granite hill,no bathrooms, nothing. Beautiful granite"
+        
+//     },function(err, newlyCreated) {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             console.log("NEWLY CREATED CAMPGROUND \n"+newlyCreated);
+//         }
+//     });
 
 app.get("/",function(req,res){
    res.render("landing"); 
@@ -63,7 +48,7 @@ app.get("/campgrounds",function(req,res){
         if(err){
             console.log(err);
         }else{
-            res.render("campgrounds",{campgrounds:allCampgrounds});
+            res.render("index",{campgrounds:allCampgrounds});
         }
     });
     
@@ -73,9 +58,11 @@ app.post("/campgrounds", function(req, res) {
     //get data from form add to campgrounds array
     var name = req.body.name;
     var image = req.body.image;
+    var desc=req.body.description;
     var newCampground = {
         name: name,
-        image: image
+        image: image,
+        description: desc
     };
     //Create new campground and save to database
     Campground.create(newCampground, function(err, newlyCreated) {
@@ -93,7 +80,20 @@ app.post("/campgrounds", function(req, res) {
 app.get("/campgrounds/new",function(req,res){
     res.render("new.ejs");
     
-})
+});
+
+
+app.get("/campgrounds/:id",function(req,res){
+        //find campground with provided id from url
+        Campground.findById(req.params.id,function(err,foundCampground){
+           if(err){
+               console.log(err);
+           } else{
+               res.render("show",{campground:foundCampground});
+           }
+        });
+});
+
 app.listen(process.env.PORT,process.env.IP,function(){
     console.log("Yelp Camp Server has started...");
 });

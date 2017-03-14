@@ -72,8 +72,18 @@ NPM is package manager for javascript.
     *db.dogs.update({name:"Rusty"},{breed:"Labradoodle"})
     *db.dogs.update({name:"Rusty"},{$set:{name:"Tater",isCute:true})
     *db.dogs.remove({breed:"Labradoodle"})
+    *db.dogs.drop() removes all dogs;
     
 #Mongoose
     *is an elegant object modelin for nodejs mongodb
     *refer Databases/cats.js for setup and config
+    
+#RESTful Routes
+    name     url        verb    desc.
+    ===================================================
+    INDEX   /dogs       GET     Display list of all dogs
+    NEW     /dogs/new   GET     Display Form to make a new dog
+    CREATE  /dogs       POST    Add a new dog to DB
+    SHOW    /dogs/:id   GET     Shows info about one dog
+    
     

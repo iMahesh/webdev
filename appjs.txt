@@ -38,3 +38,8 @@ app.listen(process.env.PORT,process.env.IP,function(){
         <p>YelpCamp&reg; All rights reserved &copy;2016</p>
     </body>
 </html>
+
+
+<% include partials/header %>
+
+<% include partials/footer %>
