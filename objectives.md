@@ -72,3 +72,8 @@ NPM is package manager for javascript.
     *db.dogs.update({name:"Rusty"},{breed:"Labradoodle"})
     *db.dogs.update({name:"Rusty"},{$set:{name:"Tater",isCute:true})
     *db.dogs.remove({breed:"Labradoodle"})
+    
+#Mongoose
+    *is an elegant object modelin for nodejs mongodb
+    
+    
