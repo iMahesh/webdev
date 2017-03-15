@@ -13,12 +13,14 @@ mongoose.connect("mongodb://localhost/DB_NAME",function(err){
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
-
-app.use(bodyParser.urlencoded({extended:true}));
-app.set("view engine","ejs");
+app.use(express.static("public"));//use custom css
 
 app.get("/",function(req,res){
    res.send("This is Home page"); 
+});
+
+app.get("/*",function(req,res){
+   res.send("This is DEFAULT age"); 
 });
 
 app.listen(process.env.PORT,process.env.IP,function(){

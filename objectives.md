@@ -60,7 +60,7 @@ NPM is package manager for javascript.
         
     *in case it crashes, us this command ./mongod --repair
     
-    CRUD CreateReadUpdateDelete    
+    CRUD CreateReadUpdateDestroy    
     *mongo opens up the mongo shell
     *help basic features of mongo
     *showdbs lists all dbs
@@ -79,11 +79,29 @@ NPM is package manager for javascript.
     *refer Databases/cats.js for setup and config
     
 #RESTful Routes
-    name     url        verb    desc.
+Representational State Transfer: Mainly for CRUD
+Its conventional and reliable. 
+RESTful is a pattern that we should follow to achieve good infrastructure of a website
+    CREATE  
+    READ    /allBlogs
+    UPDATE  /updateBlog/:id
+    DESTROY /destroyBlog/:id
+    
+    name     url            HTTPverb    desc.
     ===================================================
-    INDEX   /dogs       GET     Display list of all dogs
-    NEW     /dogs/new   GET     Display Form to make a new dog
-    CREATE  /dogs       POST    Add a new dog to DB
-    SHOW    /dogs/:id   GET     Shows info about one dog
+    INDEX   /dogs           GET     Dog.find()                  Display list of all dogs
+    NEW     /dogs/new       GET     N/A                         Display Form to make a new dog
+    CREATE  /dogs           POST    Dog.create()                Add a new dog to DB
+    SHOW    /dogs/:id       GET     Dog.findById()              Shows info about one dog
+    EDIT    /dogs/:id/edit  GET     Dog.findByIdAndUpdate()     Show edit form for one dog
+    UPDATE  /dogs/:id       PUT     Dog.findByIdAndUpdate()     Update particular dog and redirects to somewhere
+    DESTROY /dogs/:id       DELETE  Dog.findByIdAndRemove()     Delete a particular dog.
+    
+# <%- %> evaluates the string or body text 
+# <%= blog.body.substring(0,100) %> limit text to first 100 characters, which helps showing the blog posts
+# action="/blogs/<%= blog._id %>?_method=PUT" method="POST" : this is called method overriding . which is helpful to use for update delete or edit
+    
+                                    
+    
     
     
