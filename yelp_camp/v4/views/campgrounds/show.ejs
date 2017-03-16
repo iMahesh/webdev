@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+<h1><%= campground.name%></h1> 
+
+<p><img src="<%= campground.image%>"></img></p>
+
+<p><%= campground.description%></p>
+<a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/new">Add New Comment</a>
+<% campground.comments.forEach(function(comment){%>
+<p><%= comment.text%> --<strong><%= comment.author%></strong></p>
+<% }) %>
+
+<% include ../partials/footer %>
