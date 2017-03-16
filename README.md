@@ -101,6 +101,41 @@ RESTful is a pattern that we should follow to achieve good infrastructure of a w
 ## <%= blog.body.substring(0,100) %> limit text to first 100 characters, which helps showing the blog posts
 ## action="/blogs/<%= blog._id %>?_method=PUT" method="POST" : this is called method overriding . which is helpful to use for update delete or edit
     
+    
+    
+
+#Authentication
+
+##Intro to Auth
+* What tools are we using?
+    * Passport 
+    * Passport Local
+    * Passport Local Mongoose
+* Walk through auth flow
+* Discuss sessions
+    * Express-Session
+
+#Auth Part 1
+* Set up folder structure
+* Install needed packages
+* Add root route and template
+* Add secret route and template
+
+#Auth Part 2
+* Create User model
+* Configure passport
+
+#Auth Part 3
+* Add Register routes
+* Add Register form
+
+#Auth Part 4
+* Add Login routes
+* Add Login form
+
+#Auth Part 5
+* Add Logout Route
+* Add isLoggedIn middleware
                                     
     
     
