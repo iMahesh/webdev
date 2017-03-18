@@ -77,6 +77,11 @@
 #Mongoose
         *is an elegant object modelin for nodejs mongodb
         *refer Databases/cats.js for setup and config
+From the command line, run:
+
+cd ~
+./mongod --repair
+If you're still having trouble then you may need to use the --repairpath <path> option, you can read about how it works here: https://docs.mongodb.com/manual/reference/command/repairDatabase/#behavior
         
 #RESTful Routes
 Representational State Transfer: Mainly for CRUD
