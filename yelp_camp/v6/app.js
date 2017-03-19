@@ -57,6 +57,9 @@ app.get("/",function(req,res){
    res.render("landing"); 
 });
 
+//=================
+//Campground routes
+//=================
 // INDEX   /dogs           GET     Dog.find()                  Display list of all dogs
 app.get("/campgrounds",function(req, res) {
     //get all campgrounds from db
@@ -115,6 +118,8 @@ app.get("/campgrounds/:id", function(req, res) {
       }
   });
 });
+
+
 //================
 //Comments Routes||
 //================
@@ -150,6 +155,8 @@ app.post("/campgrounds/:id/comments",isLoggedIn,function(req,res){
         }
     });  
 });
+
+
 //===========
 //AUTH ROUTES
 //===========
@@ -194,6 +201,9 @@ app.get("/logout",function(req, res) {
 // EDIT    /dogs/:id/edit  GET     Dog.findByIdAndUpdate()     Show edit form for one dog
 // UPDATE  /dogs/:id       PUT     Dog.findByIdAndUpdate()     Update particular dog and redirects to somewhere
 // DESTROY /dogs/:id       DELETE  Dog.findByIdAndRemove()     Delete a particular dog.
+
+
+
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Yelp Camp Server has started...");
 });
